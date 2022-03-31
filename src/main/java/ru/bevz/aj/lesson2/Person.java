@@ -2,7 +2,7 @@ package ru.bevz.aj.lesson2;
 
 import java.util.Objects;
 
-public class Person {
+public class Person implements Comparable<Person> {
     private int id;
     private String name;
 
@@ -51,5 +51,10 @@ public class Person {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        return this.getName().length() > o.getName().length() ? 1 : -1;
     }
 }
