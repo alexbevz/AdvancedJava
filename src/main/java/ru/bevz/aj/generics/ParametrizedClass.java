@@ -8,9 +8,18 @@ public class ParametrizedClass {
         System.out.println(info2);
         Integer s1 = info2.getValue();
     }
+
+//    public void abc(Info<String> info) {
+//        String s = info.getValue();
+//    }
+//
+//    public void abc(Info<Integer> info) {
+//        Integer s = info.getValue();
+//    }
+
 }
 
-class Info <T> {
+class Info<T> {
     private T value;
 
     public Info(T value) {
@@ -27,4 +36,16 @@ class Info <T> {
                 "value=" + value +
                 '}';
     }
+}
+
+class Parent {
+    public void abc(Info<String> info) {
+        String s = info.getValue();
+    }
+}
+
+class Child extends Parent {
+//    public void abc(Info<Integer> info) {
+//        Integer i = info.getValue();
+//    }
 }
