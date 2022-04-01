@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Team <T>{
+public class Team <T extends Player>{
     private String name;
     private List<T> players = new ArrayList<>();
 
@@ -30,7 +30,7 @@ public class Team <T>{
 
     public void addPlayer(T player) {
         players.add(player);
-        System.out.println("Team update: add a new player: " + ((Player) player).getName());
+        System.out.println("Team update: add a new player: " + player.getName());
     }
 
     public void playWith(Team<T> team) {
