@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class StudentInfo {
 
-    void testStudents(ArrayList<Student> al,StudentChecks sc) {
+    void testStudents(ArrayList<Student> al, StudentChecks sc) {
         for (Student s : al) {
             if (sc.check(s)) {
                 System.out.println(s);
@@ -31,11 +31,13 @@ public class StudentInfo {
 
         StudentInfo info = new StudentInfo();
 
-        info.testStudents(students, s -> s.getAvgGrade() > 8.0);
-        printDash();
-        info.testStudents(students, s -> s.getAge() < 20);
-        printDash();
-        info.testStudents(students, s -> s.getAge() > 20 && s.getAvgGrade() < 8.5 && s.getSex() == 'm');
+        students.sort((s1, s2) -> Integer.compare(s1.getCourse(), s2.getCourse()));
+        System.out.println(students);
+//        info.testStudents(students, s -> s.getAvgGrade() > 8.0);
+//        printDash();
+//        info.testStudents(students, s -> s.getAge() < 20);
+//        printDash();
+//        info.testStudents(students, s -> s.getAge() > 20 && s.getAvgGrade() < 8.5 && s.getSex() == 'm');
 
     }
 
