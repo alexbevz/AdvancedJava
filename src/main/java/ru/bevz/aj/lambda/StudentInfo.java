@@ -1,12 +1,14 @@
 package ru.bevz.aj.lambda;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.function.Predicate;
 
 public class StudentInfo {
 
-    void testStudents(ArrayList<Student> al, StudentChecks sc) {
+    void testStudents(ArrayList<Student> al, Predicate<Student> pr) {
         for (Student s : al) {
-            if (sc.check(s)) {
+            if (pr.test(s)) {
                 System.out.println(s);
             }
         }
@@ -31,13 +33,19 @@ public class StudentInfo {
 
         StudentInfo info = new StudentInfo();
 
-        students.sort((s1, s2) -> Integer.compare(s1.getCourse(), s2.getCourse()));
+        students.sort(Comparator.comparingInt(Student::getCourse));
         System.out.println(students);
-//        info.testStudents(students, s -> s.getAvgGrade() > 8.0);
-//        printDash();
-//        info.testStudents(students, s -> s.getAge() < 20);
-//        printDash();
-//        info.testStudents(students, s -> s.getAge() > 20 && s.getAvgGrade() < 8.5 && s.getSex() == 'm');
+        printDash();
+
+        Predicate<Student> p1 = student -> student.getAvgGrade() > 7.5;
+        Predicate<Student> p2 = student -> student.getSex() == 'f';
+
+        info.testStudents(students, p1.and(p2));
+
+        printDash();
+        info.testStudents(students, s -> s.getAge() < 20);
+        printDash();
+        info.testStudents(students, s -> s.getAge() > 20 && s.getAvgGrade() < 8.5 && s.getSex() == 'm');
 
     }
 
@@ -46,6 +54,6 @@ public class StudentInfo {
     }
 }
 
-interface StudentChecks {
-    boolean check(Student s);
-}
+//interface StudentChecks {
+//    boolean check(Student s);
+//}
