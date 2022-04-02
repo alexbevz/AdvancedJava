@@ -30,15 +30,20 @@ public class StudentInfo {
         students.add(st6);
 
         StudentInfo info = new StudentInfo();
-        info.testStudents(students, new CheckOverGrade());
+//        info.testStudents(students, new CheckOverGrade());
 //        info.printStudentOverGrade(students, 8.0);
+//        printDash();
+//        info.testStudents(students, new StudentChecks() {
+//            @Override
+//            public boolean check(Student s) {
+//                return s.getAge() < 20;
+//            }
+//        });
+        info.testStudents(students, (Student s) -> s.getAvgGrade() > 8.0);
         printDash();
-        info.testStudents(students, new StudentChecks() {
-            @Override
-            public boolean check(Student s) {
-                return s.getAge() < 20;
-            }
-        });
+        info.testStudents(students, (Student s) -> s.getAge() < 20);
+        printDash();
+        info.testStudents(students, (Student s) -> s.getAge() > 20 && s.getAvgGrade() < 8.5 && s.getSex() == 'm');
 //        info.printStudentsUnderAge(students, 20);
 //        printDash();
 //        info.printStudentMixCondition(students, 8.5, 20, 'm');
