@@ -2,7 +2,9 @@ package ru.bevz.aj.lambda;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
+import java.util.function.Function;
 
 public class StudentInfo {
 
@@ -33,20 +35,35 @@ public class StudentInfo {
 
         StudentInfo info = new StudentInfo();
 
-        students.sort(Comparator.comparingInt(Student::getCourse));
-        System.out.println(students);
-        printDash();
 
-        Predicate<Student> p1 = student -> student.getAvgGrade() > 7.5;
-        Predicate<Student> p2 = student -> student.getSex() == 'f';
 
-        info.testStudents(students, p1.and(p2));
+//        students.sort(Comparator.comparingInt(Student::getCourse));
+//        System.out.println(students);
+//        printDash();
+//
+//        Predicate<Student> p1 = student -> student.getAvgGrade() > 7.5;
+//        Predicate<Student> p2 = student -> student.getSex() == 'f';
+//
+//        info.testStudents(students, p1.and(p2));
+//
+//        printDash();
+//        info.testStudents(students, s -> s.getAge() < 20);
+//        printDash();
+//        info.testStudents(students, s -> s.getAge() > 20 && s.getAvgGrade() < 8.5 && s.getSex() == 'm');
 
-        printDash();
-        info.testStudents(students, s -> s.getAge() < 20);
-        printDash();
-        info.testStudents(students, s -> s.getAge() > 20 && s.getAvgGrade() < 8.5 && s.getSex() == 'm');
+        Function<Student, Double> f = (st) -> 3.14;
 
+        System.out.println(avgOfSmth(students, s -> s.getAvgGrade()) );
+
+    }
+
+    private static double avgOfSmth(List<Student> list, Function<Student, Double> f) {
+        double result = 0;
+        for (Student s : list) {
+            result += f.apply(s);
+        }
+        result /= list.size();
+        return result;
     }
 
     static void printDash() {
