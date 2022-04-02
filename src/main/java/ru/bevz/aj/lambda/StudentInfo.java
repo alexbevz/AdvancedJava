@@ -32,17 +32,23 @@ public class StudentInfo {
         StudentInfo info = new StudentInfo();
         info.testStudents(students, new CheckOverGrade());
 //        info.printStudentOverGrade(students, 8.0);
-//        printDash();
+        printDash();
+        info.testStudents(students, new StudentChecks() {
+            @Override
+            public boolean check(Student s) {
+                return s.getAge() < 20;
+            }
+        });
 //        info.printStudentsUnderAge(students, 20);
 //        printDash();
 //        info.printStudentMixCondition(students, 8.5, 20, 'm');
 
     }
 
-//    static void printDash() {
-//        System.out.println("------------------------------------");
-//    }
-//
+    static void printDash() {
+        System.out.println("------------------------------------");
+    }
+
 //    void printStudentOverGrade(ArrayList<Student> al, double grade) {
 //        for (Student s : al) {
 //            if (s.getAvgGrade() < grade) {
@@ -76,6 +82,6 @@ class CheckOverGrade implements StudentChecks {
 
     @Override
     public boolean check(Student s) {
-        return s.avgGrade > 8.0;
+        return s.getAvgGrade() > 8.0;
     }
 }
