@@ -30,63 +30,20 @@ public class StudentInfo {
         students.add(st6);
 
         StudentInfo info = new StudentInfo();
-//        info.testStudents(students, new CheckOverGrade());
-//        info.printStudentOverGrade(students, 8.0);
-//        printDash();
-//        info.testStudents(students, new StudentChecks() {
-//            @Override
-//            public boolean check(Student s) {
-//                return s.getAge() < 20;
-//            }
-//        });
-        info.testStudents(students, (Student s) -> s.getAvgGrade() > 8.0);
+
+        info.testStudents(students, s -> s.getAvgGrade() > 8.0);
         printDash();
-        info.testStudents(students, (Student s) -> s.getAge() < 20);
+        info.testStudents(students, s -> s.getAge() < 20);
         printDash();
-        info.testStudents(students, (Student s) -> s.getAge() > 20 && s.getAvgGrade() < 8.5 && s.getSex() == 'm');
-//        info.printStudentsUnderAge(students, 20);
-//        printDash();
-//        info.printStudentMixCondition(students, 8.5, 20, 'm');
+        info.testStudents(students, s -> s.getAge() > 20 && s.getAvgGrade() < 8.5 && s.getSex() == 'm');
 
     }
 
     static void printDash() {
         System.out.println("------------------------------------");
     }
-
-//    void printStudentOverGrade(ArrayList<Student> al, double grade) {
-//        for (Student s : al) {
-//            if (s.getAvgGrade() < grade) {
-//                System.out.println(s);
-//            }
-//        }
-//    }
-//
-//    void printStudentsUnderAge(ArrayList<Student> al, int age) {
-//        for (Student s : al) {
-//            if (s.getAge() < age) {
-//                System.out.println(s);
-//            }
-//        }
-//    }
-//
-//    void printStudentMixCondition(ArrayList<Student> al, double grade, int age, char sex) {
-//        for (Student s : al) {
-//            if (s.getAge() > age && s.getAvgGrade() < grade && s.getSex() == sex) {
-//                System.out.println(s);
-//            }
-//        }
-//    }
 }
 
 interface StudentChecks {
     boolean check(Student s);
-}
-
-class CheckOverGrade implements StudentChecks {
-
-    @Override
-    public boolean check(Student s) {
-        return s.getAvgGrade() > 8.0;
-    }
 }
