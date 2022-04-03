@@ -1,4 +1,4 @@
-package ru.bevz.aj.nested_classes.inner;
+package ru.bevz.aj.nested_classes.inner_class;
 
 public class Car {
     String color;
