@@ -6,7 +6,7 @@ public class Ex8 extends Thread {
     public void run() {
         for (int i = 1; i <= 10; i++) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -38,7 +38,7 @@ class MyRunnable1 implements Runnable {
     public void run() {
         for (int i = 1; i <= 10; i++) {
             try {
-                Thread.sleep((int) (Math.random() * 2000));
+                Thread.sleep((int) (Math.random() * 200));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
